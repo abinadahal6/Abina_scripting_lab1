@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Characters</title>
+</head>
+<body>
+
+<h2>Remove Characters</h2>
+<p id="output"></p>
+
+<script>
+function removeCharacters(str, n) {
+    return str.slice(n);
+}
+
+let text = "JavaScript";
+let n = 4;
+
+output.innerHTML =
+    "Original String: " + text + "<br>" +
+    "After Removing " + n + " Characters: " +
+    removeCharacters(text, n);
+</script>
+
+</body>
+</html>

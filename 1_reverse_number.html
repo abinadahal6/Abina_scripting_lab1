@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse Number</title>
+</head>
+<body>
+
+<h2>Reverse Number</h2>
+<p id="output"></p>
+
+<script>
+function reverseNumber(num) {
+    return Number(String(num).split("").reverse().join(""));
+}
+
+let n = 23456;
+
+output.innerHTML = "Original Number: " + n + "<br>" +
+                   "Reverse Number: " + reverseNumber(n);
+</script>
+
+</body>
+</html>

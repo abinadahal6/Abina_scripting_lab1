@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Array</title>
+</head>
+<body>
+
+<h2>Check Whether Input is Array</h2>
+<p id="output"></p>
+
+<script>
+function checkArray(input) {
+    return Array.isArray(input);
+}
+
+let data = [10, 20, 30];
+
+output.innerHTML =
+    "Input: " + data + "<br>" +
+    "Is it an array? " + checkArray(data);
+</script>
+
+</body>
+</html>

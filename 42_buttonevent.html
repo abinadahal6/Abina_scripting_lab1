@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Button Events</title>
+<style>
+  body { font-family: Arial; text-align: center; padding: 20px; }
+  button { margin: 5px; padding: 8px 12px; }
+  #para { font-size: 16px; padding: 10px; }
+</style>
+</head>
+<body>
+
+<h2>Button and Paragraph Events</h2>
+
+<p id="para">This is a sample paragraph. Click the buttons below to see the effect.</p>
+
+<button onclick="changeBackground()">Change Background</button>
+<button onclick="changeParaBackground()">Change Paragraph Background</button>
+<button onclick="hideParagraph()">Hide Paragraph</button>
+<button onclick="showParagraph()">Show Paragraph</button>
+<button onclick="increaseFont()">Increase Font Size by 2pt</button>
+<button onclick="decreaseFont()">Decrease Font Size by 2pt</button>
+<button onclick="resetFont()">Reset Font into 12pt</button>
+<button onclick="changeTextColor()">Change Text Color</button>
+
+<script>
+  var fontSize = 16;
+
+  function changeBackground() {
+    var colors = ["lightblue", "lightgreen", "lightyellow", "lightpink"];
+    var random = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = random;
+  }
+
+  function changeParaBackground() {
+    var colors = ["yellow", "orange", "cyan", "lightgray"];
+    var random = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById("para").style.backgroundColor = random;
+  }
+
+  function hideParagraph() {
+    document.getElementById("para").style.display = "none";
+  }
+
+  function showParagraph() {
+    document.getElementById("para").style.display = "block";
+  }
+
+  function increaseFont() {
+    fontSize += 2;
+    document.getElementById("para").style.fontSize = fontSize + "px";
+  }
+
+  function decreaseFont() {
+    fontSize -= 2;
+    document.getElementById("para").style.fontSize = fontSize + "px";
+  }
+
+  function resetFont() {
+    fontSize = 12;
+    document.getElementById("para").style.fontSize = fontSize + "px";
+  }
+
+  function changeTextColor() {
+    var colors = ["red", "blue", "green", "purple", "brown"];
+    var random = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById("para").style.color = random;
+  }
+</script>
+
+</body>
+</html>

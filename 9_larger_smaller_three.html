@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Largest and Smallest</title>
+</head>
+<body>
+
+<h2>Largest and Smallest Number</h2>
+<p id="output"></p>
+
+<script>
+let a = Number(prompt("Enter first integer:"));
+let b = Number(prompt("Enter second integer:"));
+let c = Number(prompt("Enter third integer:"));
+
+let largest = Math.max(a, b, c);
+let smallest = Math.min(a, b, c);
+
+output.innerHTML =
+    "Numbers: " + a + ", " + b + ", " + c + "<br>" +
+    "Largest Number: " + largest + "<br>" +
+    "Smallest Number: " + smallest;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Object</title>
+</head>
+<body>
+
+<h2>Browser Window</h2>
+
+<button onclick="openWindow()">Open Window</button>
+<button onclick="closeWindow()">Close Window</button>
+<button onclick="resizeWindow()">Resize Window</button>
+<button onclick="showSize()">Show Window Size</button>
+
+<p id="output"></p>
+
+<script>
+let newWindow;
+
+function openWindow() {
+    newWindow = window.open("", "", "width=500,height=400");
+    newWindow.document.write("<h2>New Window</h2>");
+}
+
+function closeWindow() {
+    if (newWindow) {
+        newWindow.close();
+    }
+}
+
+function resizeWindow() {
+    if (newWindow) {
+        newWindow.resizeTo(700, 500);
+    }
+}
+
+function showSize() {
+    output.innerHTML =
+        "Inner Width: " + window.innerWidth + " px<br>" +
+        "Inner Height: " + window.innerHeight + " px<br>" +
+        "Outer Width: " + window.outerWidth + " px<br>" +
+        "Outer Height: " + window.outerHeight + " px";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .calculator {
+            width: 360px;
+            margin: 30px auto;
+        }
+
+        #display {
+            width: 270px;
+            height: 50px;
+            font-size: 25px;
+            text-align: right;
+        }
+
+        button {
+            width: 85px;
+            height: 55px;
+            font-size: 20px;
+            margin: 2px;
+        }
+
+        .operator {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Calculator</h2>
+
+    <div class="calculator">
+
+        <input type="text" id="display" readonly>
+
+        <button class="operator" onclick="clearDisplay()">C</button>
+
+        <br>
+
+        <button onclick="addValue('1')">1</button>
+        <button onclick="addValue('2')">2</button>
+        <button onclick="addValue('3')">3</button>
+        <button class="operator" onclick="addValue('/')">/</button>
+
+        <br>
+
+        <button onclick="addValue('4')">4</button>
+        <button onclick="addValue('5')">5</button>
+        <button onclick="addValue('6')">6</button>
+        <button class="operator" onclick="addValue('*')">*</button>
+
+        <br>
+
+        <button onclick="addValue('7')">7</button>
+        <button onclick="addValue('8')">8</button>
+        <button onclick="addValue('9')">9</button>
+        <button class="operator" onclick="addValue('-')">-</button>
+
+        <br>
+
+        <button onclick="addValue('0')">0</button>
+        <button onclick="addValue('.')">.</button>
+        <button class="operator" onclick="calculate()">=</button>
+        <button class="operator" onclick="addValue('+')">+</button>
+
+    </div>
+
+    <script>
+
+        function addValue(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function calculate() {
+            let display = document.getElementById("display");
+
+            try {
+                display.value = eval(display.value);
+            }
+            catch {
+                display.value = "Error";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

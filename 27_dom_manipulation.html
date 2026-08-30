@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+</head>
+<body>
+
+<h2>DOM Manipulation</h2>
+
+<p id="p1">First Paragraph</p>
+<p id="p2">Second Paragraph</p>
+<p id="p3">Third Paragraph</p>
+<p id="p4">Fourth Paragraph</p>
+
+<p id="output"></p>
+
+<script>
+let first = document.querySelector("p");
+
+let paragraphs = document.querySelectorAll("p");
+
+document.getElementById("p4").textContent =
+    "Fourth Paragraph Changed";
+
+paragraphs.forEach(function(p, i) {
+    p.className = "paragraph";
+    p.style.fontSize = "18px";
+    p.style.border = "1px solid black";
+    p.style.padding = "5px";
+
+    if (i == 0 || i == 2) {
+        p.style.color = "green";
+    } else {
+        p.style.color = "red";
+    }
+});
+
+output.innerHTML =
+    "First Paragraph: " + first.textContent;
+</script>
+
+</body>
+</html>

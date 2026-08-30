@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Even Odd Prime</title>
+</head>
+<body>
+
+<h2>Even, Odd and Prime Numbers</h2>
+<p id="output"></p>
+
+<script>
+let n = Number(prompt("Enter the last number:"));
+let output = document.getElementById("output");
+
+function isPrime(num) {
+    if (num < 2) return false;
+
+    for (let i = 2; i < num; i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+for (let i = 1; i <= n; i++) {
+
+    let number = document.createElement("span");
+
+    number.innerHTML = i;
+    number.style.padding = "8px";
+    number.style.margin = "3px";
+    number.style.display = "inline-block";
+
+    if (isPrime(i)) {
+        number.style.backgroundColor = "red";
+    } else if (i % 2 == 0) {
+        number.style.backgroundColor = "green";
+    } else {
+        number.style.backgroundColor = "yellow";
+    }
+
+    output.appendChild(number);
+}
+</script>
+
+</body>
+</html>

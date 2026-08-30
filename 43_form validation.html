@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+<style>
+  body { font-family: Arial; }
+  .container { max-width: 450px; margin: auto; padding: 15px; border: 1px solid #ccc; }
+  label { display: block; margin-top: 10px; font-weight: bold; }
+  input[type=text], input[type=password], select {
+    width: 100%; padding: 6px; box-sizing: border-box;
+  }
+  .error { color: red; font-size: 13px; }
+  .success { color: green; font-weight: bold; }
+  button { margin-top: 15px; padding: 8px 16px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Registration Form</h2>
+<form id="myForm">
+
+  <label>Name</label>
+  <input type="text" id="name">
+  <span class="error" id="nameErr"></span>
+
+  <label>Address</label>
+  <input type="text" id="address">
+  <span class="error" id="addressErr"></span>
+
+  <label>Username</label>
+  <input type="text" id="username">
+  <span class="error" id="usernameErr"></span>
+
+  <label>Email</label>
+  <input type="text" id="email">
+  <span class="error" id="emailErr"></span>
+
+  <label>Password</label>
+  <input type="password" id="password">
+  <span class="error" id="passwordErr"></span>
+
+  <label>Website</label>
+  <input type="text" id="website">
+
+  <label>Phone</label>
+  <input type="text" id="phone">
+  <span class="error" id="phoneErr"></span>
+
+  <label>Gender</label>
+  <input type="radio" name="gender" value="Male"> Male
+  <input type="radio" name="gender" value="Female"> Female
+  <input type="radio" name="gender" value="Other"> Other
+  <br><span class="error" id="genderErr"></span>
+
+  <label>Course</label>
+  <select id="course">
+    <option value="">--Select Course--</option>
+    <option value="BCA">BCA</option>
+    <option value="BBA">BBA</option>
+    <option value="BSc">BSc</option>
+  </select>
+  <span class="error" id="courseErr"></span>
+
+  <br>
+  <button type="submit">Submit</button>
+  <p class="success" id="successMsg"></p>
+
+</form>
+</div>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  var isValid = true;
+
+  // clear old messages
+  var errors = document.querySelectorAll(".error");
+  errors.forEach(function(el) { el.innerHTML = ""; });
+  document.getElementById("successMsg").innerHTML = "";
+
+  // Name
+  var name = document.getElementById("name").value.trim();
+  var nameRegex = /^[A-Za-z ]+$/;
+  if (name === "") {
+    document.getElementById("nameErr").innerHTML = "Name cannot be empty.";
+    isValid = false;
+  } else if (!nameRegex.test(name)) {
+    document.getElementById("nameErr").innerHTML = "Name cannot contain numbers.";
+    isValid = false;
+  }
+
+  // Address
+  var address = document.getElementById("address").value.trim();
+  if (address === "") {
+    document.getElementById("addressErr").innerHTML = "Address cannot be empty.";
+    isValid = false;
+  }
+
+  // Username
+  var username = document.getElementById("username").value.trim();
+  var usernameRegex = /^[A-Za-z0-9_]+$/;
+  if (username === "") {
+    document.getElementById("usernameErr").innerHTML = "Username cannot be empty.";
+    isValid = false;
+  } else if (!usernameRegex.test(username)) {
+    document.getElementById("usernameErr").innerHTML = "No spaces or special characters except underscore allowed.";
+    isValid = false;
+  }
+
+  // Email
+  var email = document.getElementById("email").value.trim();
+  if (email === "") {
+    document.getElementById("emailErr").innerHTML = "Email cannot be empty.";
+    isValid = false;
+  } else if (email.indexOf("@") === -1) {
+    document.getElementById("emailErr").innerHTML = "Email must include @ symbol.";
+    isValid = false;
+  }
+
+  // Password
+  var password = document.getElementById("password").value;
+  var passRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+  if (password === "") {
+    document.getElementById("passwordErr").innerHTML = "Password cannot be empty.";
+    isValid = false;
+  } else if (!passRegex.test(password)) {
+    document.getElementById("passwordErr").innerHTML =
+      "Password must be 8+ chars with upper, lower, digit, special char.";
+    isValid = false;
+  }
+
+  // Phone
+  var phone = document.getElementById("phone").value.trim();
+  var phoneRegex = /^(98|97|96)[0-9]{8}$/;
+  if (phone === "") {
+    document.getElementById("phoneErr").innerHTML = "Phone cannot be empty.";
+    isValid = false;
+  } else if (!phoneRegex.test(phone)) {
+    document.getElementById("phoneErr").innerHTML = "Phone must be digits only and start with 98/97/96.";
+    isValid = false;
+  }
+
+  // Gender
+  var genderChecked = document.querySelector('input[name="gender"]:checked');
+  if (!genderChecked) {
+    document.getElementById("genderErr").innerHTML = "Please select a gender.";
+    isValid = false;
+  }
+
+  // Course
+  var course = document.getElementById("course").value;
+  if (course === "") {
+    document.getElementById("courseErr").innerHTML = "Please select a course.";
+    isValid = false;
+  }
+
+  if (isValid) {
+    document.getElementById("successMsg").innerHTML = "Form submitted successfully!";
+  }
+});
+</script>
+
+</body>
+</html>

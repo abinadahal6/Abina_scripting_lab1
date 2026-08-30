@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BOM Navigator</title>
+</head>
+<body>
+
+<h2>Browser Information</h2>
+
+<button onclick="showInfo()">Show Information</button>
+
+<p id="output"></p>
+
+<script>
+function showInfo() {
+
+    output.innerHTML =
+        "User Agent: " + navigator.userAgent + "<br>" +
+        "Language: " + navigator.language + "<br>" +
+        "Platform: " + navigator.platform + "<br>" +
+        "Online: " + navigator.onLine;
+}
+</script>
+
+</body>
+</html>

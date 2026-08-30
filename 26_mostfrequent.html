@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Most Frequent Words</title>
+</head>
+<body>
+
+<h2>Ten Most Frequent Words</h2>
+<p id="output"></p>
+
+<script>
+function tenMostFrequentWords(str) {
+    let words = str.toLowerCase().split(/\s+/);
+    let count = {};
+
+    words.forEach(function(word) {
+        count[word] = (count[word] || 0) + 1;
+    });
+
+    return Object.entries(count)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+}
+
+let text = prompt("Enter a sentence:");
+
+let result = tenMostFrequentWords(text);
+
+output.innerHTML = result.map(function(item) {
+    return item[0] + " : " + item[1];
+}).join("<br>");
+</script>
+
+</body>
+</html>

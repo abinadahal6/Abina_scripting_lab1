@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Larger and Smaller</title>
+</head>
+<body>
+
+<h2>Larger and Smaller Number</h2>
+<p id="output"></p>
+
+<script>
+let a = Number(prompt("Enter first integer:"));
+let b = Number(prompt("Enter second integer:"));
+
+if (a > b) {
+    output.innerHTML = "Larger Number: " + a + "<br>" +
+                       "Smaller Number: " + b;
+} else if (b > a) {
+    output.innerHTML = "Larger Number: " + b + "<br>" +
+                       "Smaller Number: " + a;
+} else {
+    output.innerHTML = "Both numbers are equal.";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History Object</title>
+</head>
+<body>
+
+<h2>Browser History</h2>
+
+<p id="output"></p>
+
+<button onclick="history.back()">Previous Page</button>
+
+<button onclick="history.forward()">Next Page</button>
+
+<button onclick="history.go(-2)">Go Back 2 Pages</button>
+
+<button onclick="showHistory()">Show History Length</button>
+
+<script>
+function showHistory() {
+
+    output.innerHTML =
+        "History Length: " + history.length;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Date</title>
+</head>
+<body>
+
+<h2>Current Date</h2>
+<p id="output"></p>
+
+<script>
+let today = new Date();
+
+let day = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
+
+output.innerHTML = "Current Date: " + month + "-" + day + "-" + year;
+</script>
+
+</body>
+</html>

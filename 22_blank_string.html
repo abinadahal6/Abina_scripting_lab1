@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Blank String</title>
+</head>
+<body>
+
+<h2>Check Blank String</h2>
+<p id="output"></p>
+
+<script>
+function isBlank(str) {
+    return str.trim() === "";
+}
+
+let text = "   ";
+
+if (isBlank(text)) {
+    output.innerHTML = "The string is blank.";
+} else {
+    output.innerHTML = "The string is not blank.";
+}
+</script>
+
+</body>
+</html>

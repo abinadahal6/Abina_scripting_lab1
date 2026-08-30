@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Account</title>
+</head>
+<body>
+
+<h2>Person Account</h2>
+<p id="output"></p>
+
+<script>
+let personAccount = {
+    firstName: "Ram",
+    lastName: "Sharma",
+
+    incomes: [
+        {description: "Salary", amount: 30000},
+        {description: "Bonus", amount: 5000}
+    ],
+
+    expenses: [
+        {description: "Rent", amount: 10000},
+        {description: "Food", amount: 5000}
+    ],
+
+    totalIncome: function() {
+        return this.incomes.reduce((sum, income) =>
+            sum + income.amount, 0);
+    },
+
+    totalExpense: function() {
+        return this.expenses.reduce((sum, expense) =>
+            sum + expense.amount, 0);
+    },
+
+    accountInfo: function() {
+        return this.firstName + " " + this.lastName;
+    },
+
+    addIncome: function(description, amount) {
+        this.incomes.push({description, amount});
+    },
+
+    addExpense: function(description, amount) {
+        this.expenses.push({description, amount});
+    },
+
+    accountBalance: function() {
+        return this.totalIncome() - this.totalExpense();
+    }
+};
+
+output.innerHTML =
+    "Name: " + personAccount.accountInfo() + "<br>" +
+    "Total Income: " + personAccount.totalIncome() + "<br>" +
+    "Total Expense: " + personAccount.totalExpense() + "<br>" +
+    "Account Balance: " + personAccount.accountBalance();
+</script>
+
+</body>
+</html>

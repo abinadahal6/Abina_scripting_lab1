@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Challenge</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>JS Challenge</h1>
+    <h2 id="year">7 Days of JS Challenge</h2>
+
+    <p id="date"></p>
+
+    <ul>
+        <li>Python Challenge Done</li>
+        <li>JavaScript Challenge Ongoing</li>
+        <li>React Challenge Coming</li>
+        <li>Full Stack Challenge Coming</li>
+        <li>Data Analysis Challenge Coming</li>
+        <li>React Native Challenge Coming</li>
+        <li>Machine Learning Challenge Coming</li>
+    </ul>
+</div>
+
+<script>
+let year = document.getElementById("year");
+let date = document.getElementById("date");
+let items = document.querySelectorAll("li");
+
+setInterval(function() {
+    year.style.color =
+        year.style.color == "red" ? "blue" : "red";
+
+    date.style.backgroundColor =
+        date.style.backgroundColor == "yellow"
+        ? "lightblue" : "yellow";
+}, 1000);
+
+items[0].style.backgroundColor = "green";
+items[1].style.backgroundColor = "yellow";
+
+for (let i = 2; i < items.length; i++) {
+    items[i].style.backgroundColor = "red";
+}
+
+date.innerHTML = new Date();
+</script>
+
+</body>
+</html>

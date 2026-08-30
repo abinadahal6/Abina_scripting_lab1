@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation</title>
+</head>
+<body>
+
+<h2>Current Location</h2>
+
+<button onclick="getLocation()">Get My Location</button>
+
+<p id="output"></p>
+
+<script>
+function getLocation() {
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(
+            showPosition,
+            showError
+        );
+
+    } else {
+        output.innerHTML =
+            "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+
+    output.innerHTML =
+        "Latitude: " + position.coords.latitude + "<br>" +
+        "Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+
+    if (error.code == 1) {
+        output.innerHTML =
+            "Location permission denied.";
+    }
+    else if (error.code == 2) {
+        output.innerHTML =
+            "Location information is unavailable.";
+    }
+    else {
+        output.innerHTML =
+            "An error occurred while getting location.";
+    }
+}
+</script>
+
+</body>
+</html>

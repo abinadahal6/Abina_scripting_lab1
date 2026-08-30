@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odd or Even</title>
+</head>
+<body>
+
+<h2>Odd and Even Numbers</h2>
+<p id="output"></p>
+
+<script>
+let result = "";
+
+for (let i = 0; i <= 15; i++) {
+
+    if (i % 2 == 0) {
+        result += i + " is Even<br>";
+    } else {
+        result += i + " is Odd<br>";
+    }
+}
+
+output.innerHTML = result;
+</script>
+
+</body>
+</html>

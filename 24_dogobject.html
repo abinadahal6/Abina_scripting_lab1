@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Object</title>
+</head>
+<body>
+
+<h2>Dog Object</h2>
+<p id="output"></p>
+
+<script>
+let dog = {};
+
+console.log(dog);
+
+dog.name = "Tommy";
+dog.legs = 4;
+dog.color = "Brown";
+dog.age = 3;
+
+dog.bark = function() {
+    return "woof woof";
+};
+
+dog.breed = "Labrador";
+
+dog.getDogInfo = function() {
+    return this.name + " is a " + this.breed;
+};
+
+output.innerHTML =
+    "Name: " + dog.name + "<br>" +
+    "Legs: " + dog.legs + "<br>" +
+    "Color: " + dog.color + "<br>" +
+    "Age: " + dog.age + "<br>" +
+    "Bark: " + dog.bark() + "<br>" +
+    "Breed: " + dog.breed + "<br>" +
+    "Dog Info: " + dog.getDogInfo();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Management</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 400px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Cookie Management</h2>
+
+    <input type="text" id="key" placeholder="Enter Key">
+    <input type="text" id="value" placeholder="Enter Value">
+
+    <br>
+
+    <button onclick="saveCookie()">Save Cookie</button>
+    <button onclick="readCookie()">Read Cookie</button>
+    <button onclick="displayCookies()">Display All</button>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+    <button onclick="deleteAllCookies()">Delete All</button>
+
+    <p id="message"></p>
+
+    <div id="table"></div>
+
+    <script>
+
+        function saveCookie() {
+
+            let key = document.getElementById("key").value;
+            let value = document.getElementById("value").value;
+
+            if (key == "" || value == "") {
+                message.innerHTML = "Please enter key and value.";
+                return;
+            }
+
+            document.cookie =
+                encodeURIComponent(key) + "=" +
+                encodeURIComponent(value) + "; path=/";
+
+            message.innerHTML = "Cookie saved successfully.";
+        }
+
+
+        function readCookie() {
+
+            let key = document.getElementById("key").value;
+            let cookies = document.cookie.split("; ");
+            let found = false;
+
+            for (let cookie of cookies) {
+
+                let parts = cookie.split("=");
+
+                let cookieKey =
+                    decodeURIComponent(parts[0]);
+
+                let cookieValue =
+                    decodeURIComponent(parts.slice(1).join("="));
+
+                if (cookieKey == key) {
+
+                    message.innerHTML =
+                        "Value of " + key + " = " + cookieValue;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                message.innerHTML = "Cookie not found.";
+            }
+        }
+
+
+        function displayCookies() {
+
+            let cookies = document.cookie.split("; ");
+            let html = "<table>";
+
+            html +=
+                "<tr><th>Key</th><th>Value</th></tr>";
+
+            if (document.cookie == "") {
+
+                html +=
+                    "<tr><td colspan='2'>No cookies found</td></tr>";
+
+            } else {
+
+                for (let cookie of cookies) {
+
+                    let parts = cookie.split("=");
+
+                    let key =
+                        decodeURIComponent(parts[0]);
+
+                    let value =
+                        decodeURIComponent(
+                            parts.slice(1).join("=")
+                        );
+
+                    html +=
+                        "<tr><td>" + key +
+                        "</td><td>" + value +
+                        "</td></tr>";
+                }
+            }
+
+            html += "</table>";
+
+            document.getElementById("table").innerHTML = html;
+        }
+
+
+        function deleteCookie() {
+
+            let key = document.getElementById("key").value;
+
+            document.cookie =
+                encodeURIComponent(key) +
+                "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+            message.innerHTML =
+                "Cookie deleted.";
+
+            displayCookies();
+        }
+
+
+        function deleteAllCookies() {
+
+            let cookies = document.cookie.split("; ");
+
+            for (let cookie of cookies) {
+
+                let key = cookie.split("=")[0];
+
+                document.cookie =
+                    key +
+                    "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            }
+
+            message.innerHTML =
+                "All cookies deleted.";
+
+            displayCookies();
+        }
+
+    </script>
+
+</body>
+</html>
